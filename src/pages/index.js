@@ -1,0 +1,12 @@
+export { default as Welcome } from "./Welcome";
+export { default as Login } from "./Login";
+export { default as Service } from "./Service";
+export { default as VerifyOtp } from "./VerifyOtp";
+export { default as ChooseLocation } from "./ChooseLocation";
+export { default as Home } from "./Home";
+export { default as SignUp } from "./SignUp";
+export { default as Appointment } from "./Appointment";
+export { default as Message } from "./Message";
+export { default as Profile } from "./Profile";
+export { default as SaloonList } from "./SaloonList";
+export { default as Filter } from "./Filter";
