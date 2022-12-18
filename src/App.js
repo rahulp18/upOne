@@ -8,6 +8,7 @@ import {
   Login,
   Message,
   Profile,
+  SalonDetail,
   SaloonList,
   Service,
   SignUp,
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/saloons" element={<SaloonList />} />
           <Route path="/filter" element={<Filter />} />
+          <Route path="/salon/:id" element={<SalonDetail />} />
         </Routes>
       </Router>
     </div>

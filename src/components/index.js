@@ -6,3 +6,4 @@ export { default as OfferCupon } from "./OfferCupon";
 export { default as MstBookedSaloon } from "./MstBookedSaloon";
 export { default as BottomNavBar } from "./BottomNavBar";
 export { default as ShopCard } from "./ShopCard";
+export { default as StafSlider } from "./StafSlider";

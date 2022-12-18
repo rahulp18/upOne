@@ -29,7 +29,7 @@ const ShopCard = ({ data }) => {
         </p>
         <div className="flex justify-between items-center mt-2">
           <button
-            onClick={() => navigate("/book")}
+            onClick={() => navigate(`/salon/${2}`)}
             className="btn btn-sm w-auto max-w-sm text-sm bg-sky-500 border-none transition-all duration-100 hover:bg-sky-600"
           >
             Book Now

@@ -10,3 +10,4 @@ export { default as Message } from "./Message";
 export { default as Profile } from "./Profile";
 export { default as SaloonList } from "./SaloonList";
 export { default as Filter } from "./Filter";
+export { default as SalonDetail } from "./SalonDetail";
