@@ -2,6 +2,7 @@ import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import {
   Appointment,
+  BookSaloon,
   ChooseLocation,
   Filter,
   Home,
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/saloons" element={<SaloonList />} />
           <Route path="/filter" element={<Filter />} />
           <Route path="/salon/:id" element={<SalonDetail />} />
+          <Route path="/booksaloon" element={<BookSaloon />} />
         </Routes>
       </Router>
     </div>

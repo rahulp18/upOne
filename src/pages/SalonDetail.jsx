@@ -115,7 +115,7 @@ const SalonDetail = () => {
             <AiOutlineMessage className="font-semibold text-2xl text-sky-500" />
           </div>
           <button
-            onClick={() => navigate("/verifyotp")}
+            onClick={() => navigate("/booksaloon")}
             className="btn w-auto max-w-sm capitalize text-md font-semibold bg-sky-500 border-none transition-all duration-100 hover:bg-sky-600"
           >
             Book Appointment <HiArrowRight />

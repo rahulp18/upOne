@@ -11,3 +11,4 @@ export { default as Profile } from "./Profile";
 export { default as SaloonList } from "./SaloonList";
 export { default as Filter } from "./Filter";
 export { default as SalonDetail } from "./SalonDetail";
+export { default as BookSaloon } from "./BookSaloon";
