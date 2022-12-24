@@ -4,15 +4,19 @@ import {
   Appointment,
   BookSaloon,
   ChooseLocation,
+  ChooseStaf,
   Filter,
   Home,
   Login,
   Message,
+  Payment,
   Profile,
   SalonDetail,
   SaloonList,
   Service,
   SignUp,
+  Success,
+  Summery,
   VerifyOtp,
   Welcome,
 } from "./pages";
@@ -35,6 +39,10 @@ const App = () => {
           <Route path="/filter" element={<Filter />} />
           <Route path="/salon/:id" element={<SalonDetail />} />
           <Route path="/booksaloon" element={<BookSaloon />} />
+          <Route path="/slot" element={<ChooseStaf />} />
+          <Route path="/summery" element={<Summery />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/success" element={<Success />} />
         </Routes>
       </Router>
     </div>

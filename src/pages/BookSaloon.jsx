@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const BookSaloon = () => {
   const navigate = useNavigate();
   return (
-    <div className="h-auto w-full">
+    <div className="h-screen w-full">
       <div className=" mx-4 my-5 flex gap-3 items-center justify-start">
         <div className="p-1 bg-sky-500 rounded-full text-white cursor-pointer">
           <FiArrowLeft
@@ -85,7 +85,7 @@ const BookSaloon = () => {
               <p className="text-sm text-white ">₹400</p>
             </div>
             <button
-              onClick={() => navigate("/booksaloon")}
+              onClick={() => navigate("/slot")}
               className="btn w-auto max-w-xs capitalize text-md font-semibold bg-sky-500 border-none transition-all duration-100 hover:bg-sky-600"
             >
               Continue <HiArrowRight />

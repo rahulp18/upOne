@@ -111,3 +111,66 @@ export const shopData = [
     star: "4",
   },
 ];
+
+export const times = [
+  {
+    time: "9 AM",
+    seat: 2,
+  },
+  {
+    time: "10 AM",
+    seat: 2,
+  },
+  {
+    time: "11 AM",
+    seat: 2,
+  },
+  {
+    time: "12 AM",
+    seat: 4,
+  },
+  {
+    time: "1 PM",
+    seat: 2,
+  },
+  {
+    time: "2 PM",
+    seat: 3,
+  },
+  {
+    time: "3 PM",
+    seat: 2,
+  },
+  {
+    time: "3 PM",
+    seat: 2,
+  },
+  {
+    time: "4 PM",
+    seat: 2,
+  },
+  {
+    time: "5 PM",
+    seat: 2,
+  },
+  {
+    time: "6 PM",
+    seat: 2,
+  },
+  {
+    time: "7 PM",
+    seat: 2,
+  },
+  {
+    time: "8 PM",
+    seat: 2,
+  },
+  {
+    time: "9 PM",
+    seat: 2,
+  },
+  {
+    time: "10 PM",
+    seat: 2,
+  },
+];

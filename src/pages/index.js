@@ -12,3 +12,7 @@ export { default as SaloonList } from "./SaloonList";
 export { default as Filter } from "./Filter";
 export { default as SalonDetail } from "./SalonDetail";
 export { default as BookSaloon } from "./BookSaloon";
+export { default as ChooseStaf } from "./ChooseStaf";
+export { default as Summery } from "./Summery";
+export { default as Payment } from "./Payment";
+export { default as Success } from "./Success";
