@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { GiComb } from "react-icons/gi";
 import { RxScissors } from "react-icons/rx";
-import Lottie from "react-lottie";
+// import Lottie from "react-lottie";
 import { useNavigate } from "react-router-dom";
 import bookAni from "../assets/booked.json";
 const defaultOptions = {
@@ -18,7 +18,7 @@ const Success = () => {
   return (
     <div className="h-screen w-full  relative py-4">
       <div className="mt-8 flex items-center justify-center">
-        <Lottie options={defaultOptions} height={250} width={250} />
+        {/* <Lottie options={defaultOptions} height={250} width={250} /> */}
       </div>
       <div className="flex items-center gap-4 justify-center flex-col">
         <h1 className="text-sky-600  font-poppins font-semibold text-2xl ">
