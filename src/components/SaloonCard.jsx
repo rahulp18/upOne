@@ -1,8 +1,13 @@
 import React from "react";
 import { MdStarRate } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 const SaloonCard = () => {
+  const navigate = useNavigate();
   return (
-    <div className="w-[100%] h-[216px] bg-black group relative rounded-3xl overflow-hidden ">
+    <div
+      className="w-[100%] h-[216px] bg-black group relative rounded-3xl overflow-hidden "
+      onClick={() => navigate(`/salon/${2}`)}
+    >
       <img
         className="w-full h-full object-cover opacity-75 rounded-xl"
         src="http://retaildesignblog.net/wp-content/uploads/2011/11/Gum-hair-salon-Milan-02.jpg"

@@ -36,25 +36,25 @@ const ChooseStaf = () => {
           <div className="flex gap-6 mt-3 uppercase flex-col">
             <div className="flex items-center justify-center relative ml-5 ">
               <img
-                src="https://i.ndtvimg.com/mt/2014-05/Patnaik_victory_PTI_240x180_thb.jpg"
+                src="https://www.showstoppersalon.com/wp-content/uploads/2021/03/hair-stylehair-styles-for-boys-hair-styles-men-salon-near-me-hair-boy-hair-salon-near-me-salon-in-mira-road-salons-hair-styles-for-wedding-near-me-9.jpg"
                 alt="staf"
                 className="h-12 w-12 rounded-full object-cover absolute -left-4"
               />
               <div className="text-white bg-sky-500 border-[1px] px-3 py-1 rounded-lg  border-gray-400 w-full shadow-sm">
                 <h1 className="text-md font-poppins font-semibold ml-7">
-                  Sunny Leaone
+                  Raju Rastoge
                 </h1>
               </div>
             </div>
             <div className="flex items-center justify-center relative ml-5 ">
               <img
-                src="https://i.ndtvimg.com/mt/2014-05/Patnaik_victory_PTI_240x180_thb.jpg"
+                src="https://www.showstoppersalon.com/wp-content/uploads/2021/03/hair-stylehair-styles-for-boys-hair-styles-men-salon-near-me-hair-boy-hair-salon-near-me-salon-in-mira-road-salons-hair-styles-for-wedding-near-me-9.jpg"
                 alt="staf"
                 className="h-12 w-12 rounded-full object-cover absolute -left-4"
               />
               <div className="text-black bg-gray-50 border-[1px] px-3 py-1 rounded-lg  border-gray-400 w-full shadow-sm">
                 <h1 className="text-md font-poppins font-semibold ml-7">
-                  RaJu Bhai
+                  Faran Chacha
                 </h1>
               </div>
             </div>

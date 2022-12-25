@@ -14,7 +14,7 @@ const SalonDetail = () => {
       <div className="p-1 bg-white z-50 rounded-full w-7 h-7 absolute top-1 left-1 text-black flex items-center justify-center cursor-pointer">
         <FiArrowLeft
           className="text-xl font-bold"
-          onClick={() => navigate("/saloons")}
+          onClick={() => navigate(`/saloons/${"shop"}`)}
         />
       </div>
       <div className="w-[100%] h-[216px] bg-black group relative  overflow-hidden ">
@@ -55,7 +55,7 @@ const SalonDetail = () => {
         </div>
       </div>
       <div className="relative z-50 ">
-        <div className="h-full  w-full px-4  -mt-4 bg-white rounded-t-2xl">
+        <div className="h-full  w-full px-4 -mt-4  bg-white rounded-t-2xl">
           <div className="flex justify-around items-center py-4 ">
             <button className="btn btn-sm bg-[#10143d] capitalize ">
               About

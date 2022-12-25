@@ -7,3 +7,5 @@ export { default as MstBookedSaloon } from "./MstBookedSaloon";
 export { default as BottomNavBar } from "./BottomNavBar";
 export { default as ShopCard } from "./ShopCard";
 export { default as StafSlider } from "./StafSlider";
+export { default as Layout } from "./Layout";
+export { default as AppoitmentCard } from "./AppoitmentCard";

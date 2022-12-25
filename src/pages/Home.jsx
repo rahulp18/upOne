@@ -70,7 +70,7 @@ const Home = () => {
           <h1 className="text-xl font-bold text-gray-700 ">Nearby Saloon</h1>
           <h1
             className="text-md font-semibold text-sky-500 ml-2"
-            onClick={() => navigate("/saloons")}
+            onClick={() => navigate(`/saloons/shop`)}
           >
             view all
           </h1>
@@ -87,9 +87,14 @@ const Home = () => {
           <h1 className="text-xl font-bold text-gray-700 ">
             Saloon Service at home{" "}
           </h1>
-          <h1 className="text-md font-semibold text-sky-500 ml-2">view all</h1>
+          <h1
+            className="text-md font-semibold text-sky-500 ml-2"
+            onClick={() => navigate(`/saloons/shop`)}
+          >
+            view all
+          </h1>
         </div>
-        <div className="flex gap-2 items-center justify-center overflow-hidden   mt-4">
+        <div className="flex gap-2 items-center justify-center overflow-hidden ">
           <SaloonHomeCard />
         </div>
       </div>
@@ -111,7 +116,7 @@ const Home = () => {
           </h1>
           <h1 className="text-md font-semibold text-sky-500 ml-2">view all</h1>
         </div>
-        <div className="flex gap-2 items-center justify-center overflow-hidden mt-4">
+        <div className="flex gap-2 items-center justify-center overflow-hidden ">
           <MstBookedSaloon />
         </div>
       </div>

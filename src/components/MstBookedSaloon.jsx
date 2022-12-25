@@ -4,10 +4,12 @@ import { FreeMode } from "swiper";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { slideData } from "../utils/data";
-import { MdStarRate } from "react-icons/md";
+
 import { GoLocation } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 
 const MstBookedSaloon = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <Swiper
@@ -22,6 +24,7 @@ const MstBookedSaloon = () => {
       >
         {slideData?.slice(0, 5).map((artist) => (
           <SwiperSlide
+            onClick={() => navigate(`/salon/${2}`)}
             key={artist?.key}
             style={{ width: "auto", height: "auto" }}
             className="flex rounded-lg p-2 bg-white mx-2 shadow-sm shadow-[#1b1b1b] animate-slideright"

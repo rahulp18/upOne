@@ -14,3 +14,8 @@ input{
     outline: none;
     padding: 3px 2px;
 }
+.layout{
+    display: grid;
+    height: 100vh;
+    grid-template-rows:  1fr auto;
+    }

@@ -5,6 +5,7 @@ import {
   BookSaloon,
   ChooseLocation,
   ChooseStaf,
+  Explore,
   Filter,
   Home,
   Login,
@@ -33,9 +34,9 @@ const App = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/appointment" element={<Appointment />} />
-          <Route path="/message" element={<Message />} />
+          <Route path="/explore" element={<Explore />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/saloons" element={<SaloonList />} />
+          <Route path="/saloons/:type" element={<SaloonList />} />
           <Route path="/filter" element={<Filter />} />
           <Route path="/salon/:id" element={<SalonDetail />} />
           <Route path="/booksaloon" element={<BookSaloon />} />

@@ -1,7 +1,8 @@
 import { FaHome } from "react-icons/fa";
 import { BsPersonLinesFill } from "react-icons/bs";
-import { AiFillMessage } from "react-icons/ai";
+
 import { CgProfile } from "react-icons/cg";
+import { MdExplore } from "react-icons/md";
 export const slideData = [
   {
     img: "https://www.bodycraft.co.in/wp-content/uploads/beautiful-woman-getting-her-hair-cut-home-by-hairstylist-scaled.jpg",
@@ -60,8 +61,8 @@ export const navLinks = [
   },
   {
     id: 3,
-    icon: <AiFillMessage className="text-xl" />,
-    link: "message",
+    icon: <MdExplore className="text-xl" />,
+    link: "explore",
   },
   {
     id: 4,
