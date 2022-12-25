@@ -9,3 +9,6 @@ export { default as ShopCard } from "./ShopCard";
 export { default as StafSlider } from "./StafSlider";
 export { default as Layout } from "./Layout";
 export { default as AppoitmentCard } from "./AppoitmentCard";
+export { default as ReviewSection } from "./ReviewSection";
+export { default as AboutSection } from "./AboutSection";
+export { default as ServicesSection } from "./ServicesSection";

@@ -1,13 +1,19 @@
-import React from "react";
-import { AiOutlineMessage } from "react-icons/ai";
-import { IoMdTime } from "react-icons/io";
-import { MdOutlineLocationOn } from "react-icons/md";
-import { HiArrowRight } from "react-icons/hi";
-import { StafSlider } from "../components";
+import React, { useState } from "react";
+
+import {
+  AboutSection,
+  ReviewSection,
+  ServicesSection,
+  StafSlider,
+} from "../components";
 import { useNavigate } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
 const SalonDetail = () => {
+  const [active, setActive] = useState("about");
+
+  const activeStyle = "bg-[#10143d] text-white";
+  const normalStyle = "text-black bg-transition";
   const navigate = useNavigate();
   return (
     <div className="h-screen relative">
@@ -57,70 +63,39 @@ const SalonDetail = () => {
       <div className="relative z-50 ">
         <div className="h-full  w-full px-4 -mt-4  bg-white rounded-t-2xl">
           <div className="flex justify-around items-center py-4 ">
-            <button className="btn btn-sm bg-[#10143d] capitalize ">
+            <button
+              className={` px-4 py-1 rounded-lg   capitalize ${
+                active === "about" ? activeStyle : normalStyle
+              } `}
+              onClick={() => setActive("about")}
+            >
               About
             </button>
-            <button className="btn btn-sm border-none text-gray-600 bg-transparent hover:bg-[#10143d] hover:text-white transition-all duration-75 ">
+            <button
+              className={` px-4 py-1 rounded-lg   capitalize ${
+                active === "services" ? activeStyle : normalStyle
+              } `}
+              onClick={() => setActive("services")}
+            >
               Services
             </button>
-            <button className="btn btn-sm border-none text-gray-600 bg-transparent hover:bg-[#10143d] hover:text-white transition-all duration-75 ">
+            <button
+              className={` px-4 py-1 rounded-lg   capitalize ${
+                active === "review" ? activeStyle : normalStyle
+              } `}
+              onClick={() => setActive("review")}
+            >
               Review
             </button>
           </div>
         </div>
-        <div className="flex justify-between px-4">
-          <div className=" justify-start flex">
-            <div className="flex items-center gap-2 first-letter:justify-center">
-              <div className="bg-sky-100 p-3 rounded-xl">
-                <IoMdTime className="font-semibold text-2xl text-sky-500" />
-              </div>
-              <div className="flex gap-1 justify-center flex-col items-start">
-                <p className="text-sm text-gray-400 font-semibold">Time</p>
-                <p className="text-sm  text-gray-900 font-semibold">
-                  9.00 AM - 10.00 PM
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className=" justify-start flex">
-            <div className="flex items-center gap-2 justify-center">
-              <div className="bg-sky-100 p-3 rounded-xl">
-                <MdOutlineLocationOn className="font-semibold text-2xl text-sky-500" />
-              </div>
-              <div className="flex gap-1 justify-center flex-col items-start">
-                <p className="text-sm text-gray-400 font-semibold">Location</p>
-                <p className="text-sm  text-gray-900 font-semibold ">
-                  Choudwar
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="px-4 mt-5">
-          <p className="text-md text-left font-roboto   text-gray-700">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-            iusto atque, libero beatae nostrum veniam distinctio itaque incidunt
-            ratione, similique consequatur delectus accusamus, deserunt
-            cupiditate explicabo cumque eveniet reprehenderit voluptas optio
-            nihil. Nostrum amet exercitationem cupiditate reprehenderit, vel
-            quo, voluptatem possimus dolores similique tenetur quae.
-          </p>
-        </div>
-        <div className="mt-4 px-4">
-          <h1 className="text-lg font-bold text-gray-700 ">Our Staf</h1>
-          <StafSlider />
-        </div>
-        <div className="px-4 py-5 mt-5 flex justify-between items-center">
-          <div className="bg-sky-100 p-3 rounded-xl">
-            <AiOutlineMessage className="font-semibold text-2xl text-sky-500" />
-          </div>
-          <button
-            onClick={() => navigate("/booksaloon")}
-            className="btn w-auto max-w-sm capitalize text-md font-semibold bg-sky-500 border-none transition-all duration-100 hover:bg-sky-600"
-          >
-            Book Appointment <HiArrowRight />
-          </button>
-        </div>
+        {active === "about" ? (
+          <AboutSection />
+        ) : active === "review" ? (
+          <ReviewSection />
+        ) : (
+          <ServicesSection />
+        )}
       </div>
     </div>
   );

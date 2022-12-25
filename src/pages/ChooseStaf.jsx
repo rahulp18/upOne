@@ -5,7 +5,7 @@ import { HiArrowRight } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import { times } from "../utils/data";
 const ChooseStaf = () => {
-  console.log(times);
+  // console.log(times);
   const navigate = useNavigate();
   const [value, onChange] = useState(new Date());
   return (
