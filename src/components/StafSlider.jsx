@@ -4,8 +4,10 @@ import { FreeMode } from "swiper";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { slideData } from "../utils/data";
+import { useNavigate } from "react-router-dom";
 
 const StafSlider = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <Swiper
@@ -25,6 +27,7 @@ const StafSlider = () => {
           >
             <div className="flex flex-col justify-center items-center">
               <img
+                onClick={() => navigate(`/barber/${Math.random() * 10}`)}
                 src={artist?.img}
                 alt="Name"
                 className="rounded-full h-[4rem] w-[4rem] object-cover"

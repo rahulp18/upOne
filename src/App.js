@@ -2,6 +2,7 @@ import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import {
   Appointment,
+  BarberProfile,
   BookSaloon,
   ChooseLocation,
   ChooseStaf,
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/summery" element={<Summery />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/success" element={<Success />} />
+          <Route path="/barber/:id" element={<BarberProfile />} />
         </Routes>
       </Router>
     </div>

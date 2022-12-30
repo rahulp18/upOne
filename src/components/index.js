@@ -12,3 +12,6 @@ export { default as AppoitmentCard } from "./AppoitmentCard";
 export { default as ReviewSection } from "./ReviewSection";
 export { default as AboutSection } from "./AboutSection";
 export { default as ServicesSection } from "./ServicesSection";
+export { default as PersonAbout } from "./PersonAbout";
+export { default as BarberReview } from "./BarberReview";
+export { default as BarberServices } from "./BarberServices";

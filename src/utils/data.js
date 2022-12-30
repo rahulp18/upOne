@@ -99,7 +99,7 @@ export const shopData = [
     id: 4,
     image:
       "https://img.grouponcdn.com/metro_draft_service/2RNUjJeARqth1toKMJViVnWhHqjr/2R-1152x648/v1/c870x524.jpg",
-    shopName: "Rati&Babi",
+    shopName: "Signature",
     desc: "Beauty salons may offer a variety of services including professional hair cutting and styling, manicures and pedicures, and often cosmetics, makeup and makeovers.",
     star: "4",
   },
@@ -107,7 +107,7 @@ export const shopData = [
     id: 5,
     image:
       "https://content3.jdmagicbox.com/comp/chennai/i7/044pxx44.xx44.190330110047.i9i7/catalogue/saloon-elite-chennai-xmcub4epay.jpg",
-    shopName: "Subrat & Lipsi",
+    shopName: "Styles Center",
     desc: "Beauty salons may offer a variety of services including professional hair cutting and styling, manicures and pedicures, and often cosmetics, makeup and makeovers.",
     star: "4",
   },
