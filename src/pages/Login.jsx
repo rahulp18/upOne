@@ -32,11 +32,11 @@ const Login = () => {
           <div className="flex flex-col items-center justify-center gap-3 mt-14">
             <button
               onClick={() => navigate("/verifyotp")}
-              className="btn w-full max-w-sm text-lg bg-sky-500 border-none transition-all duration-100 hover:bg-sky-600"
+              className="btn w-full max-w-sm text-md btn-md bg-sky-500 border-none transition-all duration-100 hover:bg-sky-600"
             >
               Get otp
             </button>
-            <button className="btn btn-outline w-full text-lg max-w-sm text-sky-500 ">
+            <button className="btn btn-outline w-full text-md max-w-sm text-sky-500 ">
               Continue With Google
             </button>
           </div>

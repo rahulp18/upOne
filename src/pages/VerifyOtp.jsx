@@ -50,7 +50,7 @@ const VerifyOtp = () => {
         </div>
         <button
           onClick={() => navigate("/location")}
-          className="btn mt-12 w-full max-w-sm text-lg bg-sky-500 border-none transition-all duration-100 hover:bg-sky-600"
+          className="btn mt-12 w-full max-w-sm text-md bg-sky-500 border-none transition-all duration-100 hover:bg-sky-600"
         >
           Login
         </button>

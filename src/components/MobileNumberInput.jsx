@@ -9,7 +9,7 @@ const MobileNumberInput = () => {
       placeholder="Enter phone number"
       value={value}
       onChange={setValue}
-      className="text-lg input input-bordered shadow-sm"
+      className="text-md input input-bordered shadow-sm"
     />
   );
 };
