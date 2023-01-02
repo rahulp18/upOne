@@ -15,3 +15,4 @@ export { default as ServicesSection } from "./ServicesSection";
 export { default as PersonAbout } from "./PersonAbout";
 export { default as BarberReview } from "./BarberReview";
 export { default as BarberServices } from "./BarberServices";
+export { default as Loading } from "./Loading";

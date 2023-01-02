@@ -1,11 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiArrowLeft } from "react-icons/fi";
 import { MdOutlineGpsFixed } from "react-icons/md";
 import { BiSearchAlt } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
+import { useGlobalContext } from "../context/context";
 const ChooseLocation = () => {
   const navigate = useNavigate();
+  const { token, url } = useGlobalContext();
+  const [currentLocation, setCurrentLocation] = useState({
+    lat: "",
+    long: "",
+  });
+  console.log(currentLocation);
+  const getCurrentLocation = async () => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      console.log("Latitude is :", position.coords.latitude);
+      console.log("Longitude is :", position.coords.longitude);
+      setCurrentLocation({
+        ...currentLocation,
+        lat: position.coords.latitude,
+        long: position.coords.longitude,
+      });
+
+      navigate("/home");
+    });
+    try {
+      console.log(url);
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      const res = await axios.put(`${url}/user/update`);
+
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="h-screen bg-white px-6 py-5">
       <div className="flex gap-3 items-center justify-start">
@@ -38,7 +68,7 @@ const ChooseLocation = () => {
         </div>
         <div className="flex flex-col mt-8 items-center justify-center">
           <button
-            onClick={() => navigate("/home")}
+            onClick={getCurrentLocation}
             className="btn w-full flex items-center gap-2 justify-center max-w-sm text-lg capitalize bg-sky-500 border-none transition-all duration-100 hover:bg-sky-600"
           >
             <MdOutlineGpsFixed className="text-xl" />

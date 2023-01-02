@@ -1,15 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { MobileNumberInput } from "../components";
+import axios from "axios";
+import { useGlobalContext } from "../context/context";
+import { toast, Toaster } from "react-hot-toast";
+const initialState = {
+  name: "",
+  phone: "",
+  email: "",
+};
+
 const SignUp = () => {
+  const { url, setCurrentUserId, setLoading, loading } = useGlobalContext();
+  const [formData, setFormData] = useState(initialState);
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/verifyOtp");
+
+    try {
+      setLoading(true);
+      const res = await axios.post(`${url}/auth/register`, formData);
+      console.log(res);
+      setCurrentUserId(res.data.data.userId);
+      navigate("/verifyOtp");
+      setLoading(false);
+    } catch (error) {
+      console.log(error?.response?.data?.message);
+      setLoading(false);
+      toast.error(error?.response?.data?.message);
+    }
   };
+
   return (
     <div className="h-screen px-4 py-2">
+      <Toaster />
       <div className="flex items-center justify-center">
         <h1 className="flex text-[26px] font-poppins text-center items-center justify-start font-semibold text-sky-500">
           Up
@@ -26,17 +51,25 @@ const SignUp = () => {
         >
           <input
             type="text"
+            value={formData.name}
+            required
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             placeholder="Enter name"
             className="input input-bordered text-black  w-full max-w-xs"
           />
           <input
             type="email"
+            value={formData.email}
+            required
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
             placeholder="Enter Email Address"
             className="input input-bordered text-black  w-full max-w-xs"
           />
-          <MobileNumberInput />
+          <MobileNumberInput formData={formData} setFormData={setFormData} />
           <button className="btn btn-outline  w-full text-[16px] py-2 max-w-sm  mt-6">
-            Sign up
+            Get Otp
           </button>
         </form>
         <h1 className="text-sm font-roboto text-gray-400">

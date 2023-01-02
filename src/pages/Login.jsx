@@ -1,10 +1,37 @@
-import React from "react";
-import { IoCut } from "react-icons/io5";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { MobileNumberInput } from "../components";
+import { Loading, MobileNumberInput } from "../components";
+import { useGlobalContext } from "../context/context";
 const Login = () => {
+  const initialState = {
+    phone: "",
+  };
   const navigate = useNavigate();
+  const { setCurrentUserId, url, setLoading, loading, token } =
+    useGlobalContext();
+  const [formData, setFormData] = useState(initialState);
+  const loginSubmit = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.post(`${url}/auth/login`, {
+        phone: formData.phone,
+      });
+      setCurrentUserId(res.data.data.userId);
+      console.log(res);
+      setLoading(false);
+      navigate("/verifyotp");
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    if (token) {
+      navigate("/home");
+    }
+  }, [token]);
   return (
     <div className="h-screen flex items-start justify-center bg-white ">
       <div className="w-[90%] h-auto mt-[6rem] px-6 ">
@@ -28,13 +55,13 @@ const Login = () => {
           Enter mobile number to get one time password
         </h1>
         <div className="mt-6">
-          <MobileNumberInput />
+          <MobileNumberInput formData={formData} setFormData={setFormData} />
           <div className="flex flex-col items-center justify-center gap-3 mt-14">
             <button
-              onClick={() => navigate("/verifyotp")}
+              onClick={loginSubmit}
               className="btn w-full max-w-sm text-md btn-md bg-sky-500 border-none transition-all duration-100 hover:bg-sky-600"
             >
-              Get otp
+              {loading ? <Loading /> : "Get otp"}
             </button>
             <button className="btn btn-outline w-full text-md max-w-sm text-sky-500 ">
               Continue With Google

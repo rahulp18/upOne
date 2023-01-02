@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import { IoIosNotifications } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
@@ -10,9 +10,16 @@ import {
   SaloonCard,
   SaloonHomeCard,
 } from "../components";
+import { useGlobalContext } from "../context/context";
 
 const Home = () => {
+  const { token } = useGlobalContext();
   const navigate = useNavigate();
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
   return (
     <div className="bg-white relative ">
       <div className="w-auto h-[12rem] bg-sky-300 rounded-b-full">
