@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {
   BottomNavBar,
   CustomSlider,
+  Loading,
   MstBookedSaloon,
   OfferCupon,
   SaloonCard,
@@ -13,13 +14,20 @@ import {
 import { useGlobalContext } from "../context/context";
 
 const Home = () => {
-  const { token } = useGlobalContext();
+  const { token, getCurrentUser, user, loading } = useGlobalContext();
   const navigate = useNavigate();
   useEffect(() => {
     if (!token) {
       navigate("/login");
     }
+    getCurrentUser(navigate);
   }, []);
+  if (loading)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Loading />
+      </div>
+    );
   return (
     <div className="bg-white relative ">
       <div className="w-auto h-[12rem] bg-sky-300 rounded-b-full">
@@ -28,14 +36,18 @@ const Home = () => {
           <div className="flex gap-2 items-center justify-center">
             <div className="w-[4.5rem] h-[4.5rem] rounded-full shadow-sm relative bg-white p-[2px] flex items-center justify-center">
               <img
-                src="https://m.economictimes.com/thumb/height-450,width-600,imgsize-46623,msid-60503947/anushka-sharma-to-launch-her-own-clothing-line.jpg"
+                src={
+                  user?.img
+                    ? user.img
+                    : "https://www.pngkey.com/png/detail/121-1219231_user-default-profile.png"
+                }
                 alt="profile"
                 className="rounded-full h-full w-full object-cover "
               />
             </div>
             <div className="">
               <h1 className="text-lg font-bold font-roboto text-white">
-                Rahul Pradhan
+                {user?.name}
               </h1>
               <p className="text-white font-semibold font-poppins text-sm">
                 Cuttack,Choudwar

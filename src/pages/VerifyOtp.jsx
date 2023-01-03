@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useGlobalContext } from "../context/context";
 import { Toaster, toast } from "react-hot-toast";
+import { Loading } from "../components";
 const VerifyOtp = () => {
   const navigate = useNavigate();
   const [otp, setOtp] = useState();
-  const { currentUserId, setToken, url, setLoading, token } =
+  const { currentUserId, setToken, url, setLoading, token, loading } =
     useGlobalContext();
 
   useEffect(() => {
@@ -79,7 +80,7 @@ const VerifyOtp = () => {
           onClick={verifyOtp}
           className="btn mt-12 w-full max-w-sm text-md bg-sky-500 border-none transition-all duration-100 hover:bg-sky-600"
         >
-          Verify
+          {loading ? <Loading /> : "Verify"}
         </button>
       </div>
     </div>

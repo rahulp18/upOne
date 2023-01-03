@@ -5,9 +5,10 @@ import { BiSearchAlt } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useGlobalContext } from "../context/context";
+import { Loading } from "../components";
 const ChooseLocation = () => {
   const navigate = useNavigate();
-  const { token, url } = useGlobalContext();
+  const { token, url, setLoading, loading } = useGlobalContext();
   const [currentLocation, setCurrentLocation] = useState({
     lat: "",
     long: "",
@@ -22,17 +23,17 @@ const ChooseLocation = () => {
         lat: position.coords.latitude,
         long: position.coords.longitude,
       });
-
-      navigate("/home");
     });
     try {
-      console.log(url);
+      setLoading(true);
+
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       const res = await axios.put(`${url}/user/update`);
-
-      console.log(res);
+      navigate("/home");
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -72,7 +73,7 @@ const ChooseLocation = () => {
             className="btn w-full flex items-center gap-2 justify-center max-w-sm text-lg capitalize bg-sky-500 border-none transition-all duration-100 hover:bg-sky-600"
           >
             <MdOutlineGpsFixed className="text-xl" />
-            Your Current Location
+            {loading ? <Loading /> : "Your Current Location"}
           </button>
           <div className="border-2 gap-3 flex items-center justify-start mt-5 border-sky-500 rounded-lg px-4 py-1 w-full max-w-sm">
             <BiSearchAlt />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BsCalendarCheck,
   BsCreditCard2Back,
@@ -8,11 +8,25 @@ import { FiArrowLeft } from "react-icons/fi";
 import { MdHelpCenter } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { VscTerminalBash } from "react-icons/vsc";
-import { Layout } from "../components";
+import { Layout, Loading } from "../components";
 import { GoSignOut } from "react-icons/go";
+import { useGlobalContext } from "../context/context";
 
 const Profile = () => {
   const navigate = useNavigate();
+  const { logOut, user, token, getCurrentUser, loading } = useGlobalContext();
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+    getCurrentUser(navigate);
+  }, [token]);
+  if (loading)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Loading />
+      </div>
+    );
   return (
     <Layout select="profile">
       <div className="px-4 py-2">
@@ -25,12 +39,16 @@ const Profile = () => {
         <div className="flex flex-col gap-3 items-center justify-center">
           <div className="h-28 w-28 rounded-full bg-white p-[2px] border-[3px] border-sky-400 overflow-hidden">
             <img
-              src="https://i.pinimg.com/474x/32/9f/e1/329fe1788c0ad306705372fee5e494db.jpg"
+              src={
+                user?.img
+                  ? user.img
+                  : "https://www.pngkey.com/png/detail/121-1219231_user-default-profile.png"
+              }
               alt="profile"
               className="h-full object-cover rounded-full w-full"
             />
           </div>
-          <h1 className="text-lg font-bold text-gray-700">Virat Kohli</h1>
+          <h1 className="text-lg font-bold text-gray-700">{user?.name}</h1>
           {/* ACTIONS */}
           <div className="flex flex-col gap-4 items-stretch">
             <div className="px-3 flex items-center justify-start gap-4 py-1 rounded-lg shadow-md border-2 border-gray-400">
@@ -90,7 +108,10 @@ const Profile = () => {
             </div>
           </div>
           {/* Button */}
-          <div className="bg-sky-500 mt-5 px-4 py-2 rounded-lg flex items-center gap-2 font-semibold text-white">
+          <div
+            onClick={() => logOut(navigate)}
+            className="bg-sky-500 mt-5 px-4 py-2 rounded-lg flex items-center gap-2 font-semibold text-white"
+          >
             <GoSignOut />
             Sign out
           </div>
