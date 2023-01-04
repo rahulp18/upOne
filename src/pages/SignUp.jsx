@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { MobileNumberInput } from "../components";
@@ -12,7 +12,8 @@ const initialState = {
 };
 
 const SignUp = () => {
-  const { url, setCurrentUserId, setLoading, loading } = useGlobalContext();
+  const { url, setCurrentUserId, setLoading, loading, token } =
+    useGlobalContext();
   const [formData, setFormData] = useState(initialState);
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
@@ -31,7 +32,11 @@ const SignUp = () => {
       toast.error(error?.response?.data?.message);
     }
   };
-
+  useEffect(() => {
+    if (token) {
+      navigate("/home");
+    }
+  }, [token]);
   return (
     <div className="h-screen px-4 py-2">
       <Toaster />
