@@ -1,20 +1,51 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   AboutSection,
+  Loading,
   ReviewSection,
   ServicesSection,
   StafSlider,
 } from "../components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
+import { useGlobalContext } from "../context/context";
+import axios from "axios";
 
 const SalonDetail = () => {
+  const [loading, setLoading] = useState(false);
   const [active, setActive] = useState("about");
+  const [salonInfo, setSalonInfo] = useState(null);
+  const { url, fetchOurStafs, fetchServicesPerSalon, servicesPersalon } =
+    useGlobalContext();
+  const id = useParams().id;
 
+  const fetchSalonDeails = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(`${url}/shop/${id}`);
+      console.log(response);
+      setSalonInfo(response.data.data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchSalonDeails();
+    fetchOurStafs(id);
+    fetchServicesPerSalon(id);
+  }, []);
   const activeStyle = "bg-[#10143d] text-white";
   const normalStyle = "text-black bg-transition";
   const navigate = useNavigate();
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <div className="h-screen relative">
       <div className="p-1 bg-white z-50 rounded-full w-7 h-7 absolute top-1 left-1 text-black flex items-center justify-center cursor-pointer">
@@ -26,13 +57,13 @@ const SalonDetail = () => {
       <div className="w-[100%] h-[216px] bg-black group relative  overflow-hidden ">
         <img
           className="w-full h-full object-cover opacity-75"
-          src="https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg?cs=srgb&dl=pexels-delbeautybox-853427.jpg&fm=jpg"
+          src={salonInfo?.images[0].url}
           alt="images"
         />
         <div className="absolute bottom-0 left-0 w-full h-[5rem] flex items-start bg-black/40 opacity-1  ">
           <div className="flex justify-between items-center w-full mt-3 px-3">
             <h1 className="text-md text-white font-semibold font-roboto">
-              Red Chair
+              {salonInfo?.shopName}
             </h1>
             <div className="flex flex-col gap-1">
               <p className="text-xs text-white ">Today's booking</p>
@@ -90,11 +121,11 @@ const SalonDetail = () => {
           </div>
         </div>
         {active === "about" ? (
-          <AboutSection />
+          <AboutSection salonInfo={salonInfo} />
         ) : active === "review" ? (
           <ReviewSection />
         ) : (
-          <ServicesSection />
+          <ServicesSection services={servicesPersalon} />
         )}
       </div>
     </div>

@@ -1,17 +1,48 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { AiOutlineLeft } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 
 import { RiCalendarTodoFill } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
-import { BarberReview, BarberServices, PersonAbout } from "../components";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  BarberReview,
+  BarberServices,
+  Loading,
+  PersonAbout,
+} from "../components";
+import { useGlobalContext } from "../context/context";
 
 const BarberProfile = () => {
+  const [barber, setBarber] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const { url } = useGlobalContext();
   const navigate = useNavigate();
   const [active, setActive] = useState("about");
 
+  const id = useParams().id;
+
+  const fetchBarberInfo = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.get(`${url}/staf/${id}`);
+      setBarber(res.data.data);
+      console.log(res);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchBarberInfo();
+  }, []);
+
   const activeStyle = "bg-[#10143d] text-white";
   const normalStyle = "text-black bg-transition";
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className="bg-sky-100 h-screen">
       <div className="p-5 rounded-2xl relative">
@@ -29,20 +60,20 @@ const BarberProfile = () => {
         <div className="flex items-center flex-col justify-center absolute -bottom-5 left-[35%]  ">
           <div className="  h-[100px] w-[100px] bg-white rounded-2xl shadow-sm p-[3px]">
             <img
-              src="https://img.jakpost.net/c/2021/07/16/2021_07_16_115507_1626434283._large.jpg"
+              src={barber?.image}
               alt="image"
               className="h-full w-full object-cover rounded-2xl"
             />
           </div>
           <h1 className="text-lg font-bold font-roboto text-black">
-            Virat Kohli
+            {barber?.name}
           </h1>
         </div>
       </div>
       <div className="-mt-9 bg-white rounded-t-3xl px-4 py-6">
         <div className="flex items-center justify-center gap-3 mt-14">
           <p className="text-sm font-semibold font-poppins text-gray-600">
-            8 year + exp
+            {barber?.experience} exp+
           </p>
           <p className="text-sm font-semibold font-poppins flex items-center justify-center gap-1 text-gray-600">
             <BsFillPersonFill className="text-lg" /> Age 28
@@ -81,7 +112,7 @@ const BarberProfile = () => {
             </div>
           </div>
           {active === "about" ? (
-            <PersonAbout />
+            <PersonAbout barber={barber} />
           ) : active === "review" ? (
             <BarberReview />
           ) : (

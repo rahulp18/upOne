@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FiArrowLeft } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { AppoitmentCard, BottomNavBar, Layout } from "../components";
+import { AppoitmentCard, BottomNavBar, Layout, Loading } from "../components";
+import { useGlobalContext } from "../context/context";
 const Appointment = () => {
+  const { fetchAppointments, appointments, loading } = useGlobalContext();
+
   const navigate = useNavigate();
+  useEffect(() => {
+    fetchAppointments("");
+  }, []);
+
   return (
     <Layout select="appointment">
       <div className="">
@@ -23,25 +30,19 @@ const Appointment = () => {
         </div>
         <div className="h-full  w-full px-4  bg-white rounded-t-2xl">
           <div className="flex justify-around items-center py-4 ">
-            <button className="btn btn-sm bg-[#10143d] capitalize ">
-              Upcomming
-            </button>
-            <button className="btn btn-sm border-none text-gray-600 bg-transparent hover:bg-[#10143d] hover:text-white transition-all duration-75 ">
-              Past
-            </button>
-            <button className="btn btn-sm border-none text-gray-600 bg-transparent hover:bg-[#10143d] hover:text-white transition-all duration-75 ">
-              Cancelled
-            </button>
+            {/* <button className="btn btn-sm bg-[#10143d] capitalize ">
+              Appointments
+            </button> */}
           </div>
         </div>
         <div className="mt-5 flex flex-col gap-3 mb-10 px-4">
-          <AppoitmentCard />
-          <AppoitmentCard />
-          <AppoitmentCard />
-          <AppoitmentCard />
-          <AppoitmentCard />
-          <AppoitmentCard />
-          <AppoitmentCard />
+          {appointments.length === 0 ? (
+            <h1 className="">Start Booking.</h1>
+          ) : (
+            appointments.map((item, index) => (
+              <AppoitmentCard data={item} key={index} />
+            ))
+          )}
         </div>
       </div>
     </Layout>

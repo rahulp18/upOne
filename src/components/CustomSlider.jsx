@@ -4,8 +4,10 @@ import { FreeMode } from "swiper";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { slideData } from "../utils/data";
+import { useGlobalContext } from "../context/context";
 
 const CustomSlider = () => {
+  const { services } = useGlobalContext();
   return (
     <div>
       <Swiper
@@ -17,19 +19,21 @@ const CustomSlider = () => {
         modules={[FreeMode]}
         className="mt-4"
       >
-        {slideData?.slice(0, 5).map((artist) => (
+        {services?.slice(0, 5).map((service) => (
           <SwiperSlide
-            key={artist?.key}
+            key={service?._id}
             style={{ width: "25%", height: "auto" }}
             className=" animate-slideright"
           >
             <div className="flex flex-col justify-center items-center">
               <img
-                src={artist?.img}
+                src={service?.image}
                 alt="Name"
                 className="rounded-full h-[5rem] w-[5rem] object-cover"
               />
-              <h1 className="text-md font-roboto text-center">{artist.name}</h1>
+              <h1 className="text-md font-roboto text-center">
+                {service?.serviceName}
+              </h1>
             </div>
           </SwiperSlide>
         ))}

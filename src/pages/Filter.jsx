@@ -63,7 +63,7 @@ const Filter = () => {
             CLOSE
           </div>
           <div
-            onClick={() => navigate("/saloons")}
+            onClick={() => navigate(`/saloons/shop`)}
             className="flex-1 flex text-md font-semibold text-sky-500 font-poppinx items-center justify-center"
           >
             APPLY

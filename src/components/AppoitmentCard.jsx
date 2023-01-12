@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MdWifiCalling2 } from "react-icons/md";
 import { RiShareCircleFill } from "react-icons/ri";
+import { useGlobalContext } from "../context/context";
 
-const AppoitmentCard = () => {
+const AppoitmentCard = ({ data }) => {
+  const { getShopInfo, selectShopInfo } = useGlobalContext();
+
+  useEffect(() => {
+    getShopInfo(data.shopId);
+  }, []);
   return (
     <div className="flex shadow-lg w-[100%] max-w-lg rounded-lg ">
       <div className="basis-1/3 bg-sky-400 text-white px-2 py-4">
@@ -14,18 +20,19 @@ const AppoitmentCard = () => {
 
       <div className="basis-2/3 h-full  bg-white px-2 py-4">
         <h1 className="text-lg uppercase text-gray-700 font-semibold font-roboto ">
-          Red Chair
+          {selectShopInfo?.shopName}
         </h1>
         <div className="flex justify-between items-start">
           <h1 className="text-md capitalize text-gray-700 font-semibold font-roboto ">
             Baber :
           </h1>
+
           <div className="">
             <h1 className="text-md capitalize text-gray-700 font-normal font-roboto ">
               Panvan Chandan
             </h1>
             <h1 className="text-sm capitalize text-gray-700 font-normal font-roboto ">
-              Hair Cut Hair Spa
+              {data?.services.toString()}
             </h1>
           </div>
         </div>
@@ -35,10 +42,14 @@ const AppoitmentCard = () => {
           </button>
           <div className="flex gap-2 items-center justify-center">
             <div className="bg-sky-100 p-1 rounded-md">
-              <MdWifiCalling2 className="font-semibold text-xl text-sky-500" />
+              <a href={`tel:${data?.phone}`}>
+                <MdWifiCalling2 className="font-semibold text-xl text-sky-500" />
+              </a>
             </div>
-            <div className="bg-white shadow-gray-400 shadow-sm p-1 rounded-md">
-              <RiShareCircleFill className="font-semibold text-xl text-gray-700" />
+            <div className="bg-orange-100 p-1 rounded-md">
+              <h1 className="text-md capitalize text-orange-600 font-normal font-roboto ">
+                {data.status}
+              </h1>
             </div>
           </div>
         </div>

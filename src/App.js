@@ -40,10 +40,10 @@ const App = () => {
           <Route path="/saloons/:type" element={<SaloonList />} />
           <Route path="/filter" element={<Filter />} />
           <Route path="/salon/:id" element={<SalonDetail />} />
-          <Route path="/booksaloon" element={<BookSaloon />} />
-          <Route path="/slot" element={<ChooseStaf />} />
-          <Route path="/summery" element={<Summery />} />
-          <Route path="/payment" element={<Payment />} />
+          <Route path="/booksaloon/:id" element={<BookSaloon />} />
+          <Route path="/slot/:id" element={<ChooseStaf />} />
+          <Route path="/summery/:id" element={<Summery />} />
+          <Route path="/payment/:id" element={<Payment />} />
           <Route path="/success" element={<Success />} />
 
           <Route path="/barber/:id" element={<BarberProfile />} />

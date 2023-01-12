@@ -5,7 +5,7 @@ import { MdOutlineLocationOn } from "react-icons/md";
 import { HiArrowRight } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import StafSlider from "./StafSlider";
-const AboutSection = () => {
+const AboutSection = ({ salonInfo }) => {
   const navigate = useNavigate();
   return (
     <div className="">
@@ -37,12 +37,7 @@ const AboutSection = () => {
       </div>
       <div className="px-4 mt-5">
         <p className="text-md text-left font-roboto   text-gray-700">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-          iusto atque, libero beatae nostrum veniam distinctio itaque incidunt
-          ratione, similique consequatur delectus accusamus, deserunt cupiditate
-          explicabo cumque eveniet reprehenderit voluptas optio nihil. Nostrum
-          amet exercitationem cupiditate reprehenderit, vel quo, voluptatem
-          possimus dolores similique tenetur quae.
+          {salonInfo?.overview}
         </p>
       </div>
       <div className="mt-4 px-4">
@@ -54,7 +49,7 @@ const AboutSection = () => {
           <AiOutlineMessage className="font-semibold text-2xl text-sky-500" />
         </div>
         <button
-          onClick={() => navigate("/booksaloon")}
+          onClick={() => navigate(`/booksaloon/${salonInfo._id}`)}
           className="btn w-auto max-w-sm capitalize text-md font-semibold bg-sky-500 border-none transition-all duration-100 hover:bg-sky-600"
         >
           Book Appointment <HiArrowRight />

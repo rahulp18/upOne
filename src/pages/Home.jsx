@@ -14,13 +14,24 @@ import {
 import { useGlobalContext } from "../context/context";
 
 const Home = () => {
-  const { token, getCurrentUser, user, loading } = useGlobalContext();
+  const {
+    token,
+    getCurrentUser,
+    user,
+    loading,
+    services,
+    fetchServices,
+    fetchSalons,
+    salons,
+  } = useGlobalContext();
   const navigate = useNavigate();
   useEffect(() => {
     if (!token) {
       navigate("/login");
     }
     getCurrentUser(navigate);
+    fetchServices();
+    fetchSalons();
   }, []);
   if (loading)
     return (
@@ -95,8 +106,8 @@ const Home = () => {
           </h1>
         </div>
         <div className="flex gap-2 items-center justify-center px-2 mt-4">
-          {[1, 2].map((item) => (
-            <SaloonCard key={item} />
+          {salons.map((salon, index) => (
+            <SaloonCard key={index} salon={salon} />
           ))}
         </div>
       </div>

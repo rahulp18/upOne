@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import { FiArrowLeft } from "react-icons/fi";
 import { IoFilter } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { ShopCard } from "../components";
+import { useGlobalContext } from "../context/context";
 import { shopData } from "../utils/data";
 
 const SaloonList = () => {
   const [isClick, setIsClick] = useState("nearby");
-
+  const { loading, fetchSalons, salons } = useGlobalContext();
   const navigate = useNavigate();
+  useEffect(() => {
+    fetchSalons();
+  }, []);
+
   return (
     <div className="h-screen bg-sky-50 px-3  py-5 pb-12">
       <div className="flex gap-3 items-center justify-start">
@@ -81,8 +86,8 @@ const SaloonList = () => {
       </div>
       {/* Cards */}
       <div className="flex h-auto flex-col gap-3 py-5  ">
-        {shopData.map((data) => (
-          <ShopCard data={data} key={data.id} />
+        {salons.map((data) => (
+          <ShopCard data={data} key={data._id} />
         ))}
       </div>
     </div>
