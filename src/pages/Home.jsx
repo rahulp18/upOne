@@ -39,6 +39,7 @@ const Home = () => {
         <Loading />
       </div>
     );
+  console.log(user);
   return (
     <div className="bg-white relative ">
       <div className="w-auto h-[12rem] bg-sky-300 rounded-b-full">
@@ -48,8 +49,8 @@ const Home = () => {
             <div className="w-[4.5rem] h-[4.5rem] rounded-full shadow-sm relative bg-white p-[2px] flex items-center justify-center">
               <img
                 src={
-                  user?.img
-                    ? user.img
+                  user?.image
+                    ? user.image
                     : "https://www.pngkey.com/png/detail/121-1219231_user-default-profile.png"
                 }
                 alt="profile"
