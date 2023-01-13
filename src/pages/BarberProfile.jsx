@@ -14,28 +14,14 @@ import {
 import { useGlobalContext } from "../context/context";
 
 const BarberProfile = () => {
-  const [barber, setBarber] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const { url } = useGlobalContext();
+  const { loading, fetchBarberInfo, barber } = useGlobalContext();
   const navigate = useNavigate();
   const [active, setActive] = useState("about");
 
   const id = useParams().id;
 
-  const fetchBarberInfo = async () => {
-    try {
-      setLoading(true);
-      const res = await axios.get(`${url}/staf/${id}`);
-      setBarber(res.data.data);
-      console.log(res);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
-    }
-  };
   useEffect(() => {
-    fetchBarberInfo();
+    fetchBarberInfo(id);
   }, []);
 
   const activeStyle = "bg-[#10143d] text-white";

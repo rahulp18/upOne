@@ -101,11 +101,12 @@ const AppProvider = ({ children }) => {
   // Fetch Slots
   const [availableSlot, setAvailableSlot] = useState([]);
   const filterSlots = (data) => {
+    console.log(data);
     if (data.length > 0) {
       setAvailableSlot(
-        slot.filter((elem) => {
-          return data.some((ele) => {
-            return ele.slot_time !== elem.slot_time;
+        slot.filter((el) => {
+          return !data.find((element) => {
+            return element.slot_time === el.slot_time;
           });
         })
       );
@@ -170,8 +171,20 @@ const AppProvider = ({ children }) => {
       console.log(error);
     }
   };
-  //  Fetch Shop
-
+  //  Fetch barber
+  const [barber, setBarber] = useState(null);
+  const fetchBarberInfo = async (id) => {
+    try {
+      setLoading(true);
+      const res = await axios.get(`${url}/staf/${id}`);
+      setBarber(res.data.data);
+      console.log(res);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
   return (
     <AppContext.Provider
       value={{
@@ -208,6 +221,8 @@ const AppProvider = ({ children }) => {
         recentBook,
         fetchAppointments,
         appointments,
+        fetchBarberInfo,
+        barber,
       }}
     >
       {children}
