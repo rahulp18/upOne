@@ -19,7 +19,7 @@ const ShopCard = ({ data }) => {
         </div>
 
         <p className="text-sm font-roboto w-full text-gray-400">
-          {data?.overview.substring(0, 100)}
+          {data?.overview?.substring(0, 100)}
         </p>
         <div className="flex justify-between items-center mt-2">
           <button

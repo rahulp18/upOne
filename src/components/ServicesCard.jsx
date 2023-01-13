@@ -16,12 +16,15 @@ const ServicesCard = ({ data }) => {
         <h1 className="text-md font-poppins font-semibold text-gray-600">
           {data?.serviceName}
         </h1>
-        <div className="flex items-center gap-1 text-sm text-yellow-600">
+        {/* <div className="flex items-center gap-1 text-sm text-yellow-600">
           {[1, 2, 3, 4].map((item) => (
             <MdStarRate key={item} />
           ))}
-        </div>
+        </div> */}
         <p className="text-gray-600 text-sm ">In 30 min</p>
+        <p className="text-gray-700 text-md font-roboto font-semibold ">
+          ₹{data?.price}
+        </p>
       </div>
       <div className="bg-[#10143d] text-white text-xl p-1 rounded-full -ml-3">
         <BiChevronRight />

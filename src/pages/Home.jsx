@@ -107,7 +107,7 @@ const Home = () => {
           </h1>
         </div>
         <div className="flex gap-2 items-center justify-center px-2 mt-4">
-          {salons.map((salon, index) => (
+          {salons.slice(0, 2).map((salon, index) => (
             <SaloonCard key={index} salon={salon} />
           ))}
         </div>
