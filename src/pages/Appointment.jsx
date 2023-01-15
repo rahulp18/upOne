@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { AppoitmentCard, BottomNavBar, Layout, Loading } from "../components";
 import { useGlobalContext } from "../context/context";
 const Appointment = () => {
-  const { fetchAppointments, appointments, loading } = useGlobalContext();
+  const { fetchAppointments, appointments, loading, fetchSlotInfo, slotInfo } =
+    useGlobalContext();
 
   const navigate = useNavigate();
   useEffect(() => {

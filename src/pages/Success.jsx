@@ -26,7 +26,7 @@ const Success = () => {
           A confirm message has sent to your register mobile number
         </div>
       </div>
-      <div className="bg-sky-100 mt-9 flex flex-col gap-2 p-2 rounded-sm">
+      {/* <div className="bg-sky-100 mt-9 flex flex-col gap-2 p-2 rounded-sm">
         <div className="bg-white p-2 rounded-lg shadow-sm flex justify-between items-center ">
           <div className="flex gap-1 items-center">
             <AiOutlineFieldTime className="text-sky-600 text-2xl" />
@@ -48,7 +48,7 @@ const Success = () => {
             <p className="text-sm text-black font-roboto">Hair Cut</p>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="px-4 py-3 absolute bottom-0 w-full  text-white bg-[#10143d] rounded-t-xl">
         <div className="flex justify-center items-center">
           <button

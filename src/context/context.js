@@ -185,6 +185,18 @@ const AppProvider = ({ children }) => {
       console.log(error);
     }
   };
+  const [slotInfo, setSlotInfo] = useState(null);
+  const fetchSlotInfo = async (id) => {
+    try {
+      setLoading(true);
+      const res = await axios.get(`${url}/slotsInfo/${id}`);
+      setSlotInfo(res.data.data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
   return (
     <AppContext.Provider
       value={{
@@ -223,6 +235,8 @@ const AppProvider = ({ children }) => {
         appointments,
         fetchBarberInfo,
         barber,
+        fetchSlotInfo,
+        slotInfo,
       }}
     >
       {children}
