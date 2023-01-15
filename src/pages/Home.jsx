@@ -62,7 +62,7 @@ const Home = () => {
                 {user?.name}
               </h1>
               <p className="text-white font-semibold font-poppins text-sm">
-                Cuttack,Choudwar
+                ______-_____
               </p>
             </div>
           </div>
