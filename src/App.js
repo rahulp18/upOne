@@ -1,4 +1,5 @@
 import React from "react";
+import { Toaster } from "react-hot-toast";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import {
   Appointment,
@@ -25,6 +26,7 @@ import {
 const App = () => {
   return (
     <div>
+      <Toaster />
       <Router>
         <Routes>
           <Route path="/" element={<Welcome />} />
