@@ -45,10 +45,10 @@ const SaloonHomeCard = () => {
               </h1>
 
               <h1 className="text-sm text-gray-400 font-roboto text-center">
-                Cuttack,Choudwar
+                {salon?.location}
               </h1>
               <h1 className=" flex items-center justify-center text-sm text-gray-400 font-roboto text-center">
-                <GoLocation /> 5km away
+                <GoLocation />
               </h1>
             </div>
           </div>

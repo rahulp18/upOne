@@ -1,29 +1,62 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { MdWifiCalling2 } from "react-icons/md";
 
 import { useGlobalContext } from "../context/context";
 import { slot } from "../utils/slot";
 
 const AppoitmentCard = ({ data }) => {
-  const {
-    getShopInfo,
-    selectShopInfo,
-    fetchSlotInfo,
-    slotInfo,
-    fetchBarberInfo,
-    barber,
-  } = useGlobalContext();
-
+  const { url } = useGlobalContext();
+  const [barber, setBarber] = useState("");
+  const [slotInfo, setSlotInfo] = useState();
+  const [shopInfo, setShopInfo] = useState();
+  const [loading, setLoading] = useState(false);
   const pending = "text-orange-600 bg-orange-100";
   const approved = "text-green-600 bg-green-100";
   const rejected = "text-red-600 bg-red-100";
   const completed = "text-sky-600 bg-sky-100";
 
+  const getShopInfo = async (id) => {
+    try {
+      setLoading(true);
+      const res = await axios.get(`${url}/shop/${id}`);
+      setShopInfo(res.data.data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
+  const fetchSlotInfo = async (id) => {
+    try {
+      setLoading(true);
+      const res = await axios.get(`${url}/slotsInfo/${id}`);
+      setLoading(false);
+      setSlotInfo(res.data.data);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
+  const fetchBarberInfo = async (id) => {
+    try {
+      setLoading(true);
+      const res = await axios.get(`${url}/staf/${id}`);
+      setBarber(res.data.data);
+      console.log(res);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getShopInfo(data.shopId);
     fetchSlotInfo(data.slots);
     fetchBarberInfo(data.stafId);
-  }, []);
+  }, [data]);
+
   return (
     <div className="flex shadow-lg w-[100%] max-w-lg rounded-lg ">
       <div className="basis-1/3 bg-sky-400 text-white px-2 py-4">
@@ -43,7 +76,7 @@ const AppoitmentCard = ({ data }) => {
 
       <div className="basis-2/3 h-full  bg-white px-2 py-4">
         <h1 className="text-lg uppercase text-gray-700 font-semibold font-roboto ">
-          {selectShopInfo?.shopName}
+          {shopInfo?.shopName}
         </h1>
         <div className="flex justify-between items-start">
           <h1 className="text-md capitalize text-gray-700 font-semibold font-roboto ">
@@ -65,7 +98,7 @@ const AppoitmentCard = ({ data }) => {
           </button>
           <div className="flex gap-2 items-center justify-center">
             <div className="bg-sky-100 p-1 rounded-md">
-              <a href={`tel:${selectShopInfo?.number}`}>
+              <a href={`tel:${shopInfo?.number}`}>
                 <MdWifiCalling2 className="font-semibold text-xl text-sky-500" />
               </a>
             </div>

@@ -20,7 +20,7 @@ const BookSaloon = () => {
   const [userinfo, setUserInfo] = useState({
     services: [],
   });
-  console.log(userinfo);
+  console.log(servicesPersalon);
   const handleChange = (e) => {
     // Destructuring
     const { value, checked } = e.target;
@@ -76,22 +76,20 @@ const BookSaloon = () => {
               Step 01/03
             </h1>
           </div>
-          <div className="text-xl  font-bold mt-9 font-roboto px-4">
-            Red Chair Saloon
-          </div>
+
           <div className="mt-5 h-auto px-4 py-2 w-full bg-sky-50 rounded-t-2xl">
             <div className="mt-4 flex justify-between items-center">
               <h1 className="text-md font-semibold text-black font-poppins">
                 Choose your Service
               </h1>
-              <select className="select select-sm  max-w-xs">
+              {/* <select className="select select-sm  max-w-xs">
                 <option disabled selected>
                   Select here ?
                 </option>
                 <option>Facial</option>
                 <option>Massage</option>
                 <option>Bleach</option>
-              </select>
+              </select> */}
             </div>
             <div className="flex gap-2 flex-col justify-center mt-5">
               {servicesPersalon.map((item, index) => (

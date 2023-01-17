@@ -112,8 +112,7 @@ const Summery = () => {
               <ImLocation2 className="text-sky-600 text-2xl" />
               <h1 className="text-sm font-bold text-gray-700">Location </h1>
               <p className="text-sm text-gray-400 flex flex-col gap-1">
-                <div className="">Lat: {selectShopInfo?.location?.lat}</div>
-                <div className=""> Lng: {selectShopInfo?.location?.lng}</div>
+                <div className=""> {selectShopInfo?.location}</div>
               </p>
             </div>
           </div>

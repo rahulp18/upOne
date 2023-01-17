@@ -9,7 +9,7 @@ const AboutSection = ({ salonInfo }) => {
   const navigate = useNavigate();
   return (
     <div className="">
-      <div className="flex justify-between px-4">
+      <div className="flex justify-start flex-col gap-2 px-4">
         <div className=" justify-start flex">
           <div className="flex items-center gap-2 first-letter:justify-center">
             <div className="bg-sky-100 p-3 rounded-xl">
@@ -30,7 +30,9 @@ const AboutSection = ({ salonInfo }) => {
             </div>
             <div className="flex gap-1 justify-center flex-col items-start">
               <p className="text-sm text-gray-400 font-semibold">Location</p>
-              <p className="text-sm  text-gray-900 font-semibold ">Choudwar</p>
+              <p className="text-sm  text-gray-900 font-semibold ">
+                {salonInfo?.location}
+              </p>
             </div>
           </div>
         </div>
