@@ -5,7 +5,7 @@ import {
   BsPersonFill,
 } from "react-icons/bs";
 import { FiArrowLeft } from "react-icons/fi";
-import { MdHelpCenter } from "react-icons/md";
+import { MdEdit, MdHelpCenter } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { VscTerminalBash } from "react-icons/vsc";
 import { Layout, Loading } from "../components";
@@ -37,21 +37,29 @@ const Profile = () => {
           />
         </div>
         <div className="flex flex-col gap-3 items-center justify-center">
-          <div className="h-28 w-28 rounded-full bg-white p-[2px] border-[3px] border-sky-400 overflow-hidden">
-            <img
-              src={
-                user?.img
-                  ? user.img
-                  : "https://www.pngkey.com/png/detail/121-1219231_user-default-profile.png"
-              }
-              alt="profile"
-              className="h-full object-cover rounded-full w-full"
-            />
+          <div className="relative">
+            <div className=" h-28 w-28 rounded-full bg-white p-[2px] border-[3px] border-sky-400 overflow-hidden">
+              <img
+                src={
+                  user?.img
+                    ? user.img
+                    : "https://www.pngkey.com/png/detail/121-1219231_user-default-profile.png"
+                }
+                alt="profile"
+                className="h-full object-cover rounded-full w-full"
+              />
+            </div>
+            <div className="absolute text-white bg-sky-600 bottom-2 right-0 p-1 rounded-full shadow">
+              <MdEdit />
+            </div>
           </div>
           <h1 className="text-lg font-bold text-gray-700">{user?.name}</h1>
           {/* ACTIONS */}
           <div className="flex flex-col gap-4 items-stretch">
-            <div className="px-3 flex items-center justify-start gap-4 py-1 rounded-lg shadow-md border-2 border-gray-400">
+            <div
+              onClick={() => navigate("/settingAcc")}
+              className="px-3 flex items-center justify-start gap-4 py-1 rounded-lg shadow-md border-2 border-gray-400"
+            >
               <BsPersonFill className="text-gray-600 text-3xl" />
               <div className="flex flex-col  items-start">
                 <h1 className="text-md font-bold text-gray-900 font-roboto">

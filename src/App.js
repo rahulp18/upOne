@@ -17,6 +17,7 @@ import {
   SalonDetail,
   SaloonList,
   Service,
+  SettingAcc,
   SignUp,
   Success,
   Summery,
@@ -47,6 +48,7 @@ const App = () => {
           <Route path="/summery/:id" element={<Summery />} />
           <Route path="/payment/:id" element={<Payment />} />
           <Route path="/success" element={<Success />} />
+          <Route path="/settingAcc" element={<SettingAcc />} />
 
           <Route path="/barber/:id" element={<BarberProfile />} />
         </Routes>

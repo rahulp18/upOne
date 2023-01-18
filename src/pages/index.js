@@ -18,3 +18,4 @@ export { default as Payment } from "./Payment";
 export { default as Success } from "./Success";
 export { default as Explore } from "./Explore";
 export { default as BarberProfile } from "./BarberProfile";
+export { default as SettingAcc } from "./SettingAcc";
