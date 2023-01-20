@@ -16,8 +16,14 @@ const SalonDetail = () => {
   const [loading, setLoading] = useState(false);
   const [active, setActive] = useState("about");
   const [salonInfo, setSalonInfo] = useState(null);
-  const { url, fetchOurStafs, fetchServicesPerSalon, servicesPersalon } =
-    useGlobalContext();
+  const {
+    url,
+    fetchOurStafs,
+    fetchServicesPerSalon,
+    servicesPersalon,
+    getCurrentUser,
+    user,
+  } = useGlobalContext();
   const id = useParams().id;
 
   const fetchSalonDeails = async () => {
@@ -37,6 +43,7 @@ const SalonDetail = () => {
     fetchSalonDeails();
     fetchOurStafs(id);
     fetchServicesPerSalon(id);
+    getCurrentUser();
   }, []);
   const activeStyle = "bg-[#10143d] text-white";
   const normalStyle = "text-black bg-transition";
@@ -45,7 +52,7 @@ const SalonDetail = () => {
   if (loading) {
     return <Loading />;
   }
-
+  console.log(user);
   return (
     <div className="h-screen relative">
       <div className="p-1 bg-white z-50 rounded-full w-7 h-7 absolute top-1 left-1 text-black flex items-center justify-center cursor-pointer">
@@ -121,7 +128,7 @@ const SalonDetail = () => {
           </div>
         </div>
         {active === "about" ? (
-          <AboutSection salonInfo={salonInfo} />
+          <AboutSection salonInfo={salonInfo} user={user} />
         ) : active === "review" ? (
           <ReviewSection />
         ) : (

@@ -9,6 +9,7 @@ import {
   ChooseStaf,
   Explore,
   Filter,
+  GoogleMap,
   Home,
   Login,
   Message,

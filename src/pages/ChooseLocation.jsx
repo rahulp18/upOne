@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiArrowLeft } from "react-icons/fi";
 import { MdOutlineGpsFixed } from "react-icons/md";
 import { BiSearchAlt } from "react-icons/bi";
@@ -14,7 +14,7 @@ const ChooseLocation = () => {
     long: "",
   });
   console.log(currentLocation);
-  const getCurrentLocation = async () => {
+  const getLocations = () => {
     navigator.geolocation.getCurrentPosition(function (position) {
       console.log("Latitude is :", position.coords.latitude);
       console.log("Longitude is :", position.coords.longitude);
@@ -24,11 +24,20 @@ const ChooseLocation = () => {
         long: position.coords.longitude,
       });
     });
+  };
+
+  const getCurrentLocation = async () => {
     try {
       setLoading(true);
 
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      const res = await axios.put(`${url}/user/update`);
+      const res = await axios.put(`${url}/user/updateLocation`, {
+        geo: {
+          lat: currentLocation.lat,
+          lng: currentLocation.long,
+        },
+      });
+      console.log(res);
       navigate("/home");
       setLoading(false);
     } catch (error) {
@@ -36,6 +45,9 @@ const ChooseLocation = () => {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    getLocations();
+  }, []);
 
   return (
     <div className="h-screen bg-white px-6 py-5">
@@ -55,7 +67,7 @@ const ChooseLocation = () => {
       </div>
       <div className="w-[100%] h-auto mt-[7rem]  ">
         <p className="mb-5 mt-4 font-normal  text-center text-lg font-roboto text-gray-500">
-          Hi, Rahul Nice to meet you
+          Hello , Wish you a wonderful time
         </p>
         <h1 className="text-2xl text-center font-roboto font-bold text-gray-900">
           See service Around You

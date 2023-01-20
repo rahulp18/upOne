@@ -5,8 +5,11 @@ import { MdOutlineLocationOn } from "react-icons/md";
 import { HiArrowRight } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import StafSlider from "./StafSlider";
-const AboutSection = ({ salonInfo }) => {
+
+import Map from "./Map";
+const AboutSection = ({ salonInfo, user }) => {
   const navigate = useNavigate();
+
   return (
     <div className="">
       <div className="flex justify-start flex-col gap-2 px-4">
@@ -33,6 +36,13 @@ const AboutSection = ({ salonInfo }) => {
               <p className="text-sm  text-gray-900 font-semibold ">
                 {salonInfo?.location}
               </p>
+              {/* Direction */}
+              <label htmlFor="map" className="">
+                Direction
+              </label>
+              {salonInfo?.geo && (
+                <Map shopLocation={salonInfo?.geo} myLocation={user?.geo} />
+              )}
             </div>
           </div>
         </div>
