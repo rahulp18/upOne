@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import StafSlider from "./StafSlider";
 
 import Map from "./Map";
+import { FaDirections } from "react-icons/fa";
 const AboutSection = ({ salonInfo, user }) => {
   const navigate = useNavigate();
 
@@ -36,14 +37,17 @@ const AboutSection = ({ salonInfo, user }) => {
               <p className="text-sm  text-gray-900 font-semibold ">
                 {salonInfo?.location}
               </p>
-              {/* Direction */}
-              <label htmlFor="map" className="">
-                Direction
-              </label>
-              {salonInfo?.geo && (
-                <Map shopLocation={salonInfo?.geo} myLocation={user?.geo} />
-              )}
             </div>
+            {/* Direction */}
+
+            <label htmlFor="map" className="">
+              <div className="bg-green-100 p-3 flex items-center justify-center gap-1 rounded-xl">
+                <FaDirections className="font-semibold text-2xl text-green-500" />
+              </div>
+            </label>
+            {salonInfo?.geo && (
+              <Map shopLocation={salonInfo?.geo} myLocation={user?.geo} />
+            )}
           </div>
         </div>
       </div>

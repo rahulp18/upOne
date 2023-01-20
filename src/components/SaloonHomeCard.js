@@ -44,7 +44,7 @@ const SaloonHomeCard = () => {
                 {salon?.shopName}
               </h1>
 
-              <h1 className="text-sm text-gray-400 font-roboto text-center">
+              <h1 className="text-sm max-w-[100px] truncate text-gray-400 font-roboto text-center">
                 {salon?.location}
               </h1>
               <h1 className=" flex items-center justify-center text-sm text-gray-400 font-roboto text-center">

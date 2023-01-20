@@ -6,11 +6,6 @@ import {
   useJsApiLoader,
 } from "@react-google-maps/api";
 
-const containerStyle = {
-  width: "100%",
-  height: "60%",
-};
-
 function MyComponent({ shopLocation, myLocation }) {
   console.log(shopLocation);
   const { isLoaded } = useJsApiLoader({
@@ -60,9 +55,9 @@ function MyComponent({ shopLocation, myLocation }) {
         <label className="w-screen h-[500px] p-2 relative" htmlFor="">
           <button
             onClick={calculateRoute}
-            className="absolute top-5 right-5 z-30 bg-sky-600 text-white px-2 rounded-md shadow-sm py-[1px] "
+            className="absolute font-semibold top-5 right-5 z-30 bg-sky-600 text-white px-2 rounded-md shadow-sm py-[1px] "
           >
-            Show Path
+            Find Route
           </button>
           {isLoaded ? (
             <GoogleMap
