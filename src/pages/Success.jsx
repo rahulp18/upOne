@@ -20,10 +20,11 @@ const Success = () => {
       </div>
       <div className="flex items-center gap-4 justify-center flex-col">
         <h1 className="text-sky-600  font-poppins font-semibold text-2xl ">
-          Booking Confirmed !
+          Congratulations !
         </h1>
         <div className="text-gray-700 text-center  text-md px-4">
-          A confirm message has sent to your register mobile number
+          your booking request has been sent to shop. A confirm message has sent
+          to your register mobile number
         </div>
       </div>
       {/* <div className="bg-sky-100 mt-9 flex flex-col gap-2 p-2 rounded-sm">

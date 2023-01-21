@@ -90,7 +90,7 @@ const ChooseStaf = () => {
                   <span class="text-sm font-normal font-roboto">
                     <div className="flex items-center justify-center relative ml-5 ">
                       <img
-                        src={staf?.image}
+                        src={staf?.image?.url}
                         alt="staf"
                         className="h-12 w-12 rounded-full object-cover absolute -left-4"
                       />

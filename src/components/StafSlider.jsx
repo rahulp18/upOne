@@ -30,7 +30,7 @@ const StafSlider = () => {
             <div className="flex flex-col justify-center items-center">
               <img
                 onClick={() => navigate(`/barber/${staf._id}`)}
-                src={staf?.image}
+                src={staf?.image?.url}
                 alt="Name"
                 className="rounded-full h-[4rem] w-[4rem] object-cover"
               />

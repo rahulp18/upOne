@@ -10,7 +10,7 @@ const ShopCard = ({ data }) => {
         <img
           src={data?.images[0]?.url}
           alt="shop"
-          className="w-full h-full object-cover opacity-90"
+          className="w-full h-full max-h-[200px] object-cover opacity-90"
         />
       </div>
       <div className="flex-1 px-3 py-2 overflow-hidden">

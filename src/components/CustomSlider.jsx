@@ -27,7 +27,7 @@ const CustomSlider = () => {
           >
             <div className="flex flex-col justify-center items-center">
               <img
-                src={service?.image}
+                src={service?.image.url}
                 alt="Name"
                 className="rounded-full h-[5rem] w-[5rem] object-cover"
               />
